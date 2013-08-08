@@ -22,6 +22,7 @@ PRODUCT_COPY_FILES += \
 	${DEVICE_PREBUILT}/bin/mot_boot_mode:system/bin/mot_boot_mode \
 	${DEVICE_PREBUILT}/bin/fixDelSystem.sh:system/bin/fixDelSystem.sh \
 	${DEVICE_PREBUILT}/bin/install2ndInit.sh:system/bin/install2ndInit.sh \
+	${DEVICE_PREBUILT}/xbin/buttonblink.sh:system/xbin/buttonblink.sh \
 	${DEVICE_PREBUILT}/etc/wifi/tiwlan.ini:system/etc/wifi/tiwlan.ini \
 	${DEVICE_PREBUILT}/framework/com.motorola.android.location.jar:system/framework/com.motorola.android.location.jar \
 	${DEVICE_PATH}/mb508/lib/libcamera.so:obj/lib/libcamera.so \

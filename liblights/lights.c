@@ -64,6 +64,9 @@ char const*const GREEN_LED_FILE
 char const*const BLUE_LED_FILE
         = "/sys/class/leds/blue/brightness";
 
+char const*const BLINK_FILE
+        =  "/sys/class/leds/button-backlight/blink";
+
 static unsigned int colorstate = 0;
 static int blinkstate = 0;
 
@@ -225,8 +228,9 @@ set_light_locked(unsigned int color, int blink)
     blue = color & 0xFF;
 
     // ensure blinking is off
-    err = write_int(RED_BLINK_FILE, 0);
-
+    err = write_int(BLINK_FILE, 0);
+    err = write_int(RED_BLINK_FILE, 0);    
+    
     // set colors
     err = write_int(RED_LED_FILE, red);
     err = write_int(GREEN_LED_FILE, green);
@@ -234,6 +238,8 @@ set_light_locked(unsigned int color, int blink)
 
     // blink if supposed to
     if (blink) {
+	err = write_int(BUTTON_FILE,255);
+        err = write_int(BLINK_FILE, 255);
         err = write_int(RED_BLINK_FILE, 255);
     }
     return err;
