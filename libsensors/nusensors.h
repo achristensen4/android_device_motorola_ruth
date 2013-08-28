@@ -26,7 +26,6 @@
 
 #include <hardware/hardware.h>
 #include <hardware/sensors.h>
-
 __BEGIN_DECLS
 
 /*****************************************************************************/
@@ -95,8 +94,8 @@ int init_nusensors(hw_module_t const* module, hw_device_t** device);
 // conversion of magnetic data to uT units
 #define CONVERT_M                   (1.0f/16.0f)
 #define CONVERT_M_X                 (CONVERT_M)
-#define CONVERT_M_Y                 (-CONVERT_M)
-#define CONVERT_M_Z                 (-CONVERT_M)
+#define CONVERT_M_Y                 (CONVERT_M)
+#define CONVERT_M_Z                 (CONVERT_M)
 
 #define CONVERT_O                   (1.0f/64.0f)
 #define CONVERT_O_Y                 (CONVERT_O)
@@ -111,4 +110,7 @@ int init_nusensors(hw_module_t const* module, hw_device_t** device);
 
 __END_DECLS
 
+
 #endif  // ANDROID_SENSORS_H
+
+

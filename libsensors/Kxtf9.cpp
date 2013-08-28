@@ -22,13 +22,14 @@
 #include <dirent.h>
 #include <sys/select.h>
 
+#include <stdlib.h>
+
 #include <linux/kxtf9.h>
 
 #include <cutils/log.h>
 #include <cutils/properties.h>
 
 #include "Kxtf9.h"
-
 
 /*****************************************************************************/
 
@@ -37,6 +38,7 @@ Kxtf9Sensor::Kxtf9Sensor()
       mEnabled(0),
       mInputReader(32)
 {
+
     mPendingEvent.version = sizeof(sensors_event_t);
     mPendingEvent.sensor = ID_A;
     mPendingEvent.type = SENSOR_TYPE_ACCELEROMETER;
@@ -147,13 +149,10 @@ int Kxtf9Sensor::readEvents(sensors_event_t* data, int count)
 }
 
 void Kxtf9Sensor::processEvent(int code, int value)
-{
+{			
     char tf[1];
     property_get("hw.keypad",tf,"1");
-    
-    
-
-    
+   
 	if(tf[0]=='1') {
 	    switch (code) {
 	    	case EVENT_TYPE_ACCEL_X:
@@ -174,7 +173,7 @@ void Kxtf9Sensor::processEvent(int code, int value)
 	else{
 	    switch (code) {
 		case EVENT_TYPE_ACCEL_Y:
-		    mPendingEvent.acceleration.x = value * -CONVERT_A_X;
+		    mPendingEvent.acceleration.x = value * CONVERT_A_X;
 		    break;
 		case EVENT_TYPE_ACCEL_X:
 		    mPendingEvent.acceleration.y = value * CONVERT_A_Y;
@@ -188,5 +187,5 @@ void Kxtf9Sensor::processEvent(int code, int value)
 	        break;
  	    }
     	}	
-
+    
 }

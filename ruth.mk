@@ -26,16 +26,6 @@ $(call inherit-product, vendor/motorola/ruth/ruth-vendor.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.media.capture.maxres=3m \
-    ro.media.capture.fast.fps=4 \
-    ro.media.capture.slow.fps=60 \
-    ro.media.capture.classification=classA \
-    ro.media.capture.useDFR=1 \
-    ro.media.camera.focal=2205.7,2205.7 \
-    ro.media.camera.principal=1024.0,768.0 \
-    ro.media.camera.skew=0.0 \
-    ro.media.camera.distortion=0.0,0.0,0.0,0.0,0.0 \
-    ro.mot.hw.HAC=1 \
-    ro.hw.rotator=true \
     ro.com.google.locationfeatures=1 \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.call_ring.delay=3000 \
@@ -83,7 +73,7 @@ PRODUCT_PACKAGES += \
 	dspexec \
 	libbridge \
 	libOMX.TI.AAC.encode \
-	libOMX.TI.AAC.dncode \
+	libOMX.TI.AAC.decode \
 	libOMX.TI.AMR.decode \
 	libOMX.TI.AMR.encode \
 	libOMX.TI.WBAMR.encode \
@@ -110,6 +100,7 @@ PRODUCT_PACKAGES += \
         usbd \
 	e2fsck \
 	strace \
+	libcamera \
 #	charge_only_mode \
 
 # Live wallpaper packages

@@ -23,10 +23,10 @@ PRODUCT_COPY_FILES += \
 	${DEVICE_PREBUILT}/bin/fixDelSystem.sh:system/bin/fixDelSystem.sh \
 	${DEVICE_PREBUILT}/bin/install2ndInit.sh:system/bin/install2ndInit.sh \
 	${DEVICE_PREBUILT}/xbin/buttonblink.sh:system/xbin/buttonblink.sh \
+	${DEVICE_PREBUILT}/xbin/bash:system/xbin/bash \
 	${DEVICE_PREBUILT}/etc/wifi/tiwlan.ini:system/etc/wifi/tiwlan.ini \
+        ${DEVICE_PREBUILT}/etc/wifi/fw_wlan1271.bin:system/etc/wifi/fw_wlan1271.bin \
 	${DEVICE_PREBUILT}/framework/com.motorola.android.location.jar:system/framework/com.motorola.android.location.jar \
-	${DEVICE_PATH}/mb508/lib/libcamera.so:obj/lib/libcamera.so \
-	${DEVICE_PATH}/mb508/lib/libcamera.so:system/lib/libcamera.so \
 	${DEVICE_PATH}/mb508/lib/libgki.so:system/lib/libgki.so \
 	${DEVICE_PATH}/mb508/lib/libgps.so:system/lib/libgps.so \
 	${DEVICE_PATH}/mb508/lib/hw/gps.sage.so:system/lib/hw/gps.ruth.so \
@@ -36,7 +36,16 @@ PRODUCT_COPY_FILES += \
 	${DEVICE_PATH}/mb508/bin/gkisystem:system/bin/gkisystem \
 	${DEVICE_PATH}/mb508/app/FMRadio.apk:system/app/FMRadio.apk \
 	${DEVICE_PATH}/mb508/app/FMRadioService.apk:system/app/FMRadioService.apk \
-	${DEVICE_PATH}/mb508/etc/wifi/fw_wlan1271.bin:system/etc/wifi/fw_wlan1271.bin
+	${DEVICE_PATH}/mb508/lib/libOMX.TI.mp4.splt.Encoder.so:system/lib/libOMX.TI.mp4.splt.Encoder.so \
+	${DEVICE_PATH}/mb508/lib/dsp/720p_h264vdec_sn.dll64P:system/lib/dsp/720p_h264vdec_sn.dll64P \
+	${DEVICE_PATH}/mb508/lib/dsp/720p_h264venc_sn.dll64P:system/lib/dsp/720p_h264venc_sn.dll64P \
+	${DEVICE_PATH}/mb508/lib/dsp/720p_mp4venc_sn.dll64P:system/lib/dsp/720p_mp4venc_sn.dll64P \
+	${DEVICE_PATH}/mb508/lib/dsp/720p_mp4vdec_sn.dll64P:system/lib/dsp/720p_mp4vdec_sn.dll64P \
+	${DEVICE_PATH}/mb508/lib/dsp/wmadec_sn.dll64P:system/lib/dsp/wmadec_sn.dll64P \
+	${DEVICE_PATH}/mb508/lib/dsp/wmv9dec_sn.dll64P:system/lib/dsp/wmv9dec_sn.dll64P \
+	${DEVICE_PATH}/mb508/lib/libcamera.so:system/lib/libsoccamera.so \
+	${DEVICE_PATH}/mb508/mb508/etc/mot_ise_imager_cfg.bin:system/etc/mot_ise_imager_cfg.bin \
+#        ${DEVICE_PATH}/mb508/lib/libcamera.so:obj/lib/libcamera.so \
 
 #milestone
 PRODUCT_COPY_FILES += \
@@ -64,6 +73,10 @@ PRODUCT_COPY_FILES += \
 	${DEVICE_PATH}/CyanogenModXT720/lib/modules/ext3.ko:system/lib/modules/ext3.ko \
 	${DEVICE_PATH}/CyanogenModXT720/lib/modules/jbd2.ko:system/lib/modules/jbd2.ko \
 	${DEVICE_PATH}/CyanogenModXT720/lib/modules/thumbee.ko:system/lib/modules/thumbee.ko \
+	${DEVICE_PATH}/CyanogenModXT720/lib/libaudio.so:system/lib/libaudio.so \
+	${DEVICE_PATH}/CyanogenModXT720/lib/libOMX.TI.720P.Decoder.so:system/lib/libOMX.TI.720P.Decoder.so \
+	${DEVICE_PATH}/CyanogenModXT720/lib/libOMX.TI.720P.Encoder.so:system/lib/libOMX.TI.720P.Encoder.so \
+	${DEVICE_PATH}/CyanogenModXT720/lib/libaudio.so:obj/lib/libaudio.so \
 	${DEVICE_PATH}/CyanogenModXT720/lib/dsp/jpegenc_sn.dll64P:system/lib/dsp/jpegenc_sn.dll64P \
 	${DEVICE_PATH}/CyanogenModXT720/lib/dsp/h264venc_sn.dll64P:system/lib/dsp/h264venc_sn.dll64P \
 	${DEVICE_PATH}/CyanogenModXT720/lib/dsp/nbamrenc_sn.dll64P:system/lib/dsp/nbamrenc_sn.dll64P \
@@ -81,8 +94,6 @@ PRODUCT_COPY_FILES += \
 	${DEVICE_PATH}/CyanogenModXT720/lib/dsp/ringio.dll64P:system/lib/dsp/ringio.dll64P \
 	${DEVICE_PATH}/CyanogenModXT720/lib/dsp/wbamrenc_sn.dll64P:system/lib/dsp/wbamrenc_sn.dll64P \
 	${DEVICE_PATH}/CyanogenModXT720/lib/dsp/baseimage.dof:system/lib/dsp/baseimage.dof \
-	${DEVICE_PATH}/CyanogenModXT720/lib/libaudio.so:system/lib/libaudio.so \
-	${DEVICE_PATH}/CyanogenModXT720/lib/libaudio.so:obj/lib/libaudio.so \
 
 # copy all of our kernel modules under the "modules" directory to system/lib/modules
 PRODUCT_COPY_FILES += $(shell test -d device/motorola/ruth && \

@@ -84,3 +84,15 @@ ro.mot.hw.crystaltalk=1
 
 #voice tuning level
 ro.config.vc_call_vol_steps=15
+
+#Ruth supporting HAC
+ro.mot.hw.HAC=1
+
+#Ruth has a Rotator Blade
+ro.hw.rotator=true
+
+#Ruth uses a SOC sensor, so basic camera support is required.
+ro.camsettings.premium=false
+
+#RUTH camera not support autofocus : compliance for google ACD
+ro.workaround.noautofocus=0

@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 #define LOG_NDEBUG 0
+
 #include <hardware/sensors.h>
 #include <fcntl.h>
 #include <errno.h>
 #include <dirent.h>
 #include <math.h>
+#include <stdio.h>
+
 
 #include <poll.h>
 #include <pthread.h>
@@ -27,6 +30,7 @@
 
 #include <cutils/atomic.h>
 #include <cutils/log.h>
+#include <cutils/properties.h>
 
 #include "nusensors.h"
 #include "LightSensor.h"
@@ -47,6 +51,7 @@ struct sensors_poll_context_t {
     int pollEvents(sensors_event_t* data, int count);
 
 private:
+	
     enum {
         light           = 0,
         proximity       = 1,
@@ -64,9 +69,10 @@ private:
     SensorBase* mSensors[numSensorDrivers];
 
     int handleToDriver(int handle) const {
+	
         switch (handle) {
-            case ID_A:
-            	return kxtf9;
+            case ID_A:		
+		return kxtf9;		
 	    case ID_K:
 		return keypad;
             case ID_M:
@@ -79,7 +85,7 @@ private:
                 return light;
         }
         return -EINVAL;
-    }
+    }    
 };
 
 /*****************************************************************************/
@@ -223,6 +229,8 @@ static int poll__poll(struct sensors_poll_device_t *dev,
     sensors_poll_context_t *ctx = (sensors_poll_context_t *)dev;
     return ctx->pollEvents(data, count);
 }
+
+
 
 /*****************************************************************************/
 
