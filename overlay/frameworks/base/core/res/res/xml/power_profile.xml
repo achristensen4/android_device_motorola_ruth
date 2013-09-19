@@ -40,21 +40,15 @@
   </array>
   <array name="cpu.speeds">
     <value>1000000</value>
-    <value>800000</value>
     <value>600000</value>
-    <value>400000</value>
-    <value>250000</value>
-    <value>125000</value>
+    <value>300000</value>
   </array>
   <!-- Power consumption in suspend -->
   <item name="cpu.idle">4</item>
   <!-- Power consumption at different speeds -->
   <array name="cpu.active">
-      <value>310</value>
-      <value>270</value>
-      <value>205</value>
-      <value>127</value>
-      <value>84</value>
-      <value>63</value>
+      <value>280</value>
+      <value>182</value>
+      <value>66</value>
   </array>
 </device>

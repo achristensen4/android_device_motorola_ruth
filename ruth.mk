@@ -101,6 +101,7 @@ PRODUCT_PACKAGES += \
 	e2fsck \
 	strace \
 	libcamera \
+	RuthParts \
 #	charge_only_mode \
 
 # Live wallpaper packages

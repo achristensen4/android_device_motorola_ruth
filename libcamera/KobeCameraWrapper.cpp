@@ -325,8 +325,23 @@ KobeCameraWrapper::setParameters(const CameraParameters& params)
     pars.set(CameraParameters::KEY_EXPOSURE_COMPENSATION, "0");
 
     pars.set("focus-mode","fixed");
-
     pars.set("mot-sensor-display-orientation-support","on");
+
+    int pfr = pars.getInt("preview-frame-rate");
+
+    if(pfr == 20){
+	LOGE("recorder set");
+	pars.set("mot-sensor-display-orientation-support","off");
+        pars.set("mot-sensor-display-orientation",0);
+
+	int rotation = pars.getInt("rotation");
+	
+	if(rotation == 180) rotation=0;
+	else if(rotation == 270) rotation=90;
+	else rotation=rotation+180;
+	
+	pars.set("rotation",rotation);
+    }
 
     status_t retval;
     retval = mMotoInterface->setParameters(pars);

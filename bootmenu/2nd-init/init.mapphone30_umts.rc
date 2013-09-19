@@ -59,7 +59,7 @@ on post-fs
     # Power Management
     write /sys/power/sleep_while_idle 1
     write /sys/power/enable_off_mode 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor smartass
 #    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 250000
 #    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/up_threshold 86
 #    write /sys/devices/system/cpu/cpu0/cpufreq/ondemand/sampling_rate 46875
@@ -238,7 +238,6 @@ on init
 #for cpu
     insmod /system/lib/modules/cpufreq_conservative.ko
     insmod /system/lib/modules/cpufreq_powersave.ko
-    insmod /system/lib/modules/cpufreq_interactive.ko
     insmod /system/lib/modules/cpufreq_smartass.ko
 
 #for io
@@ -287,6 +286,9 @@ on boot
 
 # try fix sensor
     setprop hw.keypad 1
+
+# symlink the selected bp_nvm files
+    exec /system/bin/sh /system/bin/init_bp_nvm.sh
 
 # Define Motorola DBVC ATVC Property defaults (failsafe properties)
     setprop ro.sys.atvc_allow_netmon_usb 0
@@ -449,18 +451,18 @@ service battd /system/bin/battd
     group mot_accy mot_pwric
     oneshot
 
-service catcommands /system/bin/catcommands
-    class pre-zygote_services
-    group radio
+#service catcommands /system/bin/catcommands
+#    class pre-zygote_services
+#    group radio
 
-service bplogd_daemon /system/usr/bin/bplogd_daemon
-    class pre-zygote_services
-    socket dlog_cmds stream 660 radio log
-    socket bp_pd_status stream 660 radio log
-    socket bp_aol_cmd stream 666 radio log
-    user radio
-    group radio inet log sdcard_rw mount
-    oneshot
+#service bplogd_daemon /system/usr/bin/bplogd_daemon
+#    class pre-zygote_services
+#    socket dlog_cmds stream 660 radio log
+#    socket bp_pd_status stream 660 radio log
+#    socket bp_aol_cmd stream 666 radio log
+#    user radio
+#    group radio inet log sdcard_rw mount
+#    oneshot
 
 service modemlog /system/bin/modemlog
    class pre-zygote_services
@@ -528,7 +530,7 @@ service panic_daemon /system/usr/bin/panic_daemon
     user radio
     group log radio system graphics sdcard_rw
     socket panic_daemon stream 660 radio radio
-    onrestart exec /system/bin/reboot
+    onrestart exec /system/bin/sh /system/bin/handle_bp_panic.sh
 
 # Ecompass daemon
 service akmd2 /system/bin/akmd2
@@ -638,20 +640,19 @@ service secclkd /system/bin/secclkd
     group mot_tpapi mot_sec_rtc mot_secclkd
     oneshot
 
-service dlnasrv /system/bin/dlnasrv
-    class post-zygote_services
-    disabled
-    oneshot
+#service dlnasrv /system/bin/dlnasrv
+#    class post-zygote_services
+#    disabled
+#    oneshot
 
-service dund_dialup /system/bin/dund --listen --channel=6 --nodetach --dialup
-    class post-zygote_services
-    group net_bt net_bt_admin
-    disabled
-    oneshot
+#service dund_dialup /system/bin/dund --listen --channel=6 --nodetach --dialup
+#    class post-zygote_services
+#    group net_bt net_bt_admin
+#    disabled
+#    oneshot
 
-# bugtogo is triggered by the KEY_LEFTSHIFT and KEY_DEL keycodes
-on property:ro.mot.hw.hardkeypad=1
-service bugtogo /system/bin/bugtogo
+# bugreport is triggered by the KEY_LEFTSHIFT and KEY_DEL keycodes
+service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
     disabled
     user root
     oneshot

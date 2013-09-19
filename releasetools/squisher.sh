@@ -7,6 +7,7 @@ rm -f $REPACK/ota/system/app/Torch.apk
 rm -f $REPACK/ota/system/app/CMWallpapers.apk
 rm -f $REPACK/ota/system/app/Development.apk
 rm -f $REPACK/ota/system/app/Protips.apk
+rm -f $REPACK/ota/system/app/Androidian.apk
 
 mkdir -p $REPACK/ota/system/etc/terminfo/x
 cp $REPACK/ota/system/etc/terminfo/l/linux $REPACK/ota/system/etc/terminfo/x/xterm

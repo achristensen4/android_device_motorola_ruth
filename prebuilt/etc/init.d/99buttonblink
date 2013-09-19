@@ -1,2 +1,0 @@
-#!/system/bin/sh
-nohup /system/xbin/buttonblink.sh > /dev/null &
