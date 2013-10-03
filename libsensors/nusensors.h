@@ -88,8 +88,8 @@ int init_nusensors(hw_module_t const* module, hw_device_t** device);
 // conversion of acceleration data to SI units (m/s^2)
 #define CONVERT_A                   (GRAVITY_EARTH / LSG)
 #define CONVERT_A_X                 (CONVERT_A)
-#define CONVERT_A_Y                 (CONVERT_A)
-#define CONVERT_A_Z                 (-CONVERT_A)
+#define CONVERT_A_Y                 (-CONVERT_A)
+#define CONVERT_A_Z                 (CONVERT_A)
 
 // conversion of magnetic data to uT units
 #define CONVERT_M                   (1.0f/16.0f)
