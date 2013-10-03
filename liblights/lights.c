@@ -135,7 +135,7 @@ set_light_backlight(struct light_device_t* dev,
     err = write_int(ALS_FILE, als_mode);
     err = write_int(LCD_FILE, brightness);
 
-    if(brightness == 0 && blinkstate){
+    if(brightness == 0 && blinkstate){	
 	system("/system/xbin/buttonblink.sh &");	
     }
     pthread_mutex_unlock(&g_lock);
@@ -216,7 +216,6 @@ static int
 set_light_locked(unsigned int color, int blink)
 {
     int err = 0;
-    int red, green, blue;
     
     if(colorstate == color &&
             blinkstate == blink) {
@@ -227,25 +226,14 @@ set_light_locked(unsigned int color, int blink)
         blinkstate = blink;
     }
 
-    red = (color >> 16) & 0xFF;
-    green = (color >> 8) & 0xFF;
-    blue = color & 0xFF;
-
     // ensure blinking is off
-    err = write_int(BLINK_FILE, 0);
-    //err = write_int(RED_BLINK_FILE, 0);    
-    
-    // set colors
-    //err = write_int(RED_LED_FILE, red);
-    //err = write_int(GREEN_LED_FILE, green);
-    //err = write_int(BLUE_LED_FILE, blue);
+    err = write_int(BLINK_FILE, 0);    
     
     // blink if supposed to
     if (blink) {
 	
 	err = write_int(BUTTON_FILE,255);
         err = write_int(BLINK_FILE, 255);
-    //    err = write_int(RED_BLINK_FILE, 255);
     }
     return err;
 }
@@ -256,7 +244,7 @@ set_light_notification(struct light_device_t* dev,
 {
     int err = 0;
     int blink;
-
+    
     switch (state->flashMode) {
        case LIGHT_FLASH_HARDWARE:
        case LIGHT_FLASH_TIMED:
