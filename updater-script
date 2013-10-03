@@ -1,4 +1,8 @@
 show_progress(0.500000, 0);
+mount("MTD", "data", "/data");
+mount("MTD", "cache", "/cache");
+run_program("/system/xbin/rm", "-rf", "/data/dalvik-cache/*");
+
 package_extract_file("system/bin/fixDelSystem.sh", "/tmp/fixDelSystem.sh");
 set_perm(0, 0, 0777, "/tmp/fixDelSystem.sh");
 run_program("/tmp/fixDelSystem.sh");
@@ -129,4 +133,5 @@ set_perm(0, 0, 0777, "/tmp/install2ndInit.sh");
 run_program("/tmp/install2ndInit.sh");
 show_progress(0.200000, 10);
 delete("system/bin/fixDelSystem.sh", "system/bin/install2ndInit.sh");
+
 
