@@ -46,6 +46,7 @@ PRODUCT_COPY_FILES += \
 	${DEVICE_PREBUILT}/etc/wifi/tiwlan.ini:system/etc/wifi/tiwlan.ini \
         ${DEVICE_PREBUILT}/etc/wifi/fw_wlan1271.bin:system/etc/wifi/fw_wlan1271.bin \
         ${DEVICE_PREBUILT}/etc/init.d/05mountsd:system/etc/init.d/05mountsd \
+        ${DEVICE_PREBUILT}etc/init.d/07cphostapconf:system/etc/init.d/07cphostapconf \
         ${DEVICE_PREBUILT}/etc/init.d/99overclock:system/etc/init.d/99overclock \
 	${DEVICE_PREBUILT}/framework/com.motorola.android.location.jar:system/framework/com.motorola.android.location.jar \
 	${DEVICE_PATH}/mb508/lib/libgki.so:system/lib/libgki.so \

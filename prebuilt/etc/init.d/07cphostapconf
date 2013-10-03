@@ -1,0 +1,7 @@
+#!/system/bin/sh
+export PATH=/system/bin:/system/xbin:$PATH
+if [ -e /data/misc/wifi/hostapd.conf ]; then
+	return
+fi
+
+cp -r /system/etc/wifi/softap/hostapd.conf /data/misc/wifi/hostapd.conf

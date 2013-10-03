@@ -259,9 +259,6 @@ on init
     insmod /system/lib/modules/twofish_common.ko
     insmod /system/lib/modules/twofish.ko
 
-#copy hostapd conf
-	copy /system/etc/wifi/softap/hostapd.conf /data/misc/wifi/hostapd.conf
-
 on early-boot
 
 # Adjust the out of memory thresholds to account for the larget

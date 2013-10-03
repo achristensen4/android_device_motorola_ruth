@@ -217,7 +217,7 @@ set_light_locked(unsigned int color, int blink)
 {
     int err = 0;
     int red, green, blue;
-
+    
     if(colorstate == color &&
             blinkstate == blink) {
         // don't bother changing if we don't have to
@@ -233,18 +233,19 @@ set_light_locked(unsigned int color, int blink)
 
     // ensure blinking is off
     err = write_int(BLINK_FILE, 0);
-    err = write_int(RED_BLINK_FILE, 0);    
+    //err = write_int(RED_BLINK_FILE, 0);    
     
     // set colors
-    err = write_int(RED_LED_FILE, red);
-    err = write_int(GREEN_LED_FILE, green);
-    err = write_int(BLUE_LED_FILE, blue);
-
+    //err = write_int(RED_LED_FILE, red);
+    //err = write_int(GREEN_LED_FILE, green);
+    //err = write_int(BLUE_LED_FILE, blue);
+    
     // blink if supposed to
     if (blink) {
+	
 	err = write_int(BUTTON_FILE,255);
         err = write_int(BLINK_FILE, 255);
-        err = write_int(RED_BLINK_FILE, 255);
+    //    err = write_int(RED_BLINK_FILE, 255);
     }
     return err;
 }
