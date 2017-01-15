@@ -4,17 +4,17 @@ ro.sf.lcd_density=120
 
 # Default network type.
 # 3 -> GSM/WCDMA (auto mode, according to PRL)
-ro.telephony.default_network=3
+ro.telephony.default_network=4
 
 # The interfaces to get DNS data from when using mobile data
 # Comma-separated
-mobiledata.interfaces=rmnet0,rmnet1,rmnet2,rmnet3,rmnet4,gannet0
+mobiledata.interfaces=rmnet0,rmnet1,rmnet2
 
 wifi.interface = tiwlan0
 # Time between scans in seconds. Keep it high to minimize battery drain.
 # This only affects the case in which there are remembered access points,
 # but none are in range.
-wifi.supplicant_scan_interval = 60
+wifi.supplicant_scan_interval = 16
 
 # Use TI hotspot code
 wifi.hotspot.ti = 1
@@ -31,7 +31,7 @@ jpeg.libskiahw.decoder.thresh=300000
 jpeg.libskiahw.encoder.enable=1
 
 # This is a high density device with more memory, so larger vm heaps for it.
-dalvik.vm.heapsize=48m
+dalvik.vm.heapsize=64m
 
 # Forbid format of these partitions in mount menu :
 ro.cwm.forbid_format=/misc,/boot,/recovery,/pds,/system
@@ -76,10 +76,10 @@ persist.sys.purgeable_assets=1
 # Increase overall touch responsiveness
 mot.proximity.distance=1
 
-video.accelerate.hw=1
+video.accelerate.hw=0
 
 #improve voice quality
-ro.ril.enable.amr.wideband=1
+ro.ril.enable.amr.wideband=0
 ro.mot.hw.crystaltalk=1
 
 #voice tuning level
@@ -92,7 +92,7 @@ ro.mot.hw.HAC=1
 ro.hw.rotator=true
 
 #Ruth uses a SOC sensor, so basic camera support is required.
-ro.camsettings.premium=false
+ro.camsettings.premium=true
 
 #RUTH camera not support autofocus : compliance for google ACD
 ro.workaround.noautofocus=0
